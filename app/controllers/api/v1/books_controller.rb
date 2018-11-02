@@ -1,4 +1,5 @@
 class Api::V1::BooksController < ApplicationController
+  skip_before_action :authorized
 
   def index
     @books = Book.all
@@ -12,25 +13,17 @@ class Api::V1::BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.user_id = book_params[:user_id]
     @book.title = book_params[:title]
     @book.author = book_params[:author]
     @book.description = book_params[:descriptions]
     @book.imgURL = book_params[:imgURL]
-    @book.read = book_params[:read]
-    @book.want_to_read = book_params[:want_to_read]
+    # @shelved_book = ShelvedBook.new(shelved_book_params)
+    # @shelved_book.book_id = @book.id
+    # @shelved_book.user_id = shelved_book_params[:user_id]
+    # @shelved_book.read = shelved_book_params[:read]
+    # @shelved_book.book_id = shelved_book_params[:want_to_read]
     if @book.save
       render json: @book
-    else
-      render json: { errors: @book.errors.full_messages }, status: :unprocessible_entity
-    end
-  end
-
-  #in the case user updates book from want_to_read to read -- handle later
-  def update
-    @book.update(book_params)
-    if @book.save
-      render json: @book, status: :accepted
     else
       render json: { errors: @book.errors.full_messages }, status: :unprocessible_entity
     end
@@ -41,7 +34,11 @@ class Api::V1::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:user_id, :title, :author, :description, :imgURL, :want_to_read, :read)
+    params.require(:book).permit(:user_id, :title, :author, :description, :imgURL)
+  end
+
+  def shelved_book_params
+    params.require(:shelved_book).permit(:book_id, :user_id, :read, :want_to_read)
   end
 
 end
