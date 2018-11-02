@@ -37,8 +37,8 @@ class Api::V1::BooksController < ApplicationController
     params.require(:book).permit(:user_id, :title, :author, :description, :imgURL)
   end
 
-  def shelved_book_params
-    params.require(:shelved_book).permit(:book_id, :user_id, :read, :want_to_read)
-  end
+  # def shelved_book_params
+  #   params.require(:shelved_book).permit(:book_id, :user_id, :read, :want_to_read)
+  # end
 
 end

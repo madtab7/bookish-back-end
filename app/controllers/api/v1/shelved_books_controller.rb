@@ -3,7 +3,7 @@ class Api::V1::ShelvedBooksController < ApplicationController
 
   def index
     @shelved_books = ShelvedBook.all
-    render json: @shelved_Books
+    render json: @shelved_books
   end
 
   def create
