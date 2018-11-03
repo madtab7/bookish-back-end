@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get '/profile', to: 'users#profile'
       resources :books
       resources :shelved_books
+        get '/userbooks', to: 'shelved_books#userbooks'
       resources :friendships
     end
   end
