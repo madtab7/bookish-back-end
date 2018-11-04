@@ -2,7 +2,13 @@ class Api::V1::ShelvedBooksController < ApplicationController
   skip_before_action :authorized
 
   def index
-    @shelved_books = ShelvedBook.all
+    # @shelved_books = ShelvedBook.all
+    if params[:user_id] != nil
+      @shelved_books = ShelvedBook.where( {"user_id": params[:user_id]} )
+      # puts params[:user_id].to_i
+    else
+      @shelved_books = ShelvedBook.all
+    end
     render json: @shelved_books
   end
 
@@ -17,6 +23,16 @@ class Api::V1::ShelvedBooksController < ApplicationController
     else
       render json: { errors: @shelved_book.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  # def show
+  #   @shelved_book = ShelvedBook.where("user_id = ?", user_id)
+  #   render json: @shelved_book, status: 200
+  # end
+
+  def users
+    @shelved_book = ShelvedBook.find_by(params[:user_id])
+    render json: @shelved_book, status: 200
   end
 
   private
