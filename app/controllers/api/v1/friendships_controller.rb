@@ -3,7 +3,11 @@ class Api::V1::FriendshipsController < ApplicationController
   skip_before_action :authorized
 
   def index
-    @friendships = Friendship.all
+    if params[:user_id] != nil
+      @friendships = Friendship.where( {"user_id": params[:user_id]} )
+    else
+      @friendships = Friendship.all
+    end  
     render json: @friendships
   end
 
@@ -13,7 +17,6 @@ class Api::V1::FriendshipsController < ApplicationController
       render json: @friendship
     end
   end
-
 
   private
 
