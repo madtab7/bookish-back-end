@@ -27,11 +27,7 @@ class Api::V1::ShelvedBooksController < ApplicationController
       render json: { errors: @shelved_book.errors.full_messages }, status: :unprocessible_entity
     end
   end
-<<<<<<< HEAD
-      
-=======
 
->>>>>>> add-friends
   def show
     @shelved_book = ShelvedBook.find(params[:id])
     render json: @shelved_book
