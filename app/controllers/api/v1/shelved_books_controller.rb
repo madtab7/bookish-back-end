@@ -19,13 +19,19 @@ class Api::V1::ShelvedBooksController < ApplicationController
     @shelved_book.user_id = shelved_book_params[:user_id]
     @shelved_book.read = shelved_book_params[:read]
     @shelved_book.want_to_read = shelved_book_params[:want_to_read]
+    @shelved_book.recommended = shelved_book_params[:recommended]
+    @shelved_book.friend_id = shelved_book_params[:friend_id]
     if @shelved_book.save
       render json: @shelved_book
     else
       render json: { errors: @shelved_book.errors.full_messages }, status: :unprocessible_entity
     end
   end
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> add-friends
   def show
     @shelved_book = ShelvedBook.find(params[:id])
     render json: @shelved_book
@@ -53,7 +59,7 @@ class Api::V1::ShelvedBooksController < ApplicationController
   private
 
   def shelved_book_params
-    params.require(:shelved_book).permit(:book_id, :user_id, :read, :want_to_read)
+    params.require(:shelved_book).permit(:book_id, :user_id, :read, :want_to_read, :recommended, :friend_id)
   end
 
 end

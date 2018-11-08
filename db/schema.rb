@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_170800) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "friendId"
+    t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_170800) do
     t.integer "user_id"
     t.boolean "read"
     t.boolean "want_to_read"
+    t.boolean "recommended"
+    t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

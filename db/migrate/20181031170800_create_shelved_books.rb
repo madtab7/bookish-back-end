@@ -5,6 +5,8 @@ class CreateShelvedBooks < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.boolean :read
       t.boolean :want_to_read
+      t.boolean :recommended
+      t.integer :friend_id
 
       t.timestamps
     end
