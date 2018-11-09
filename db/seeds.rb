@@ -14,9 +14,9 @@ users = User.create([
     avatarURL: "https://pbs.twimg.com/profile_images/650699836317011968/XZcRMc7u_400x400.jpg"
   },
   {
-    username: "alinder",
-    password: "alinder",
-    full_name: "Andrew Linder",
+    username: "alindner",
+    password: "alindner",
+    full_name: "Andrew Lindner",
     avatarURL: "https://ca.slack-edge.com/T02MD9XTF-UC1KP4E20-c6161b63538f-72"
   },
   {
