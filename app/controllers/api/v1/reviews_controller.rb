@@ -11,11 +11,15 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.find(params[:id])
-    render json: @review
+    @review = Review.new(review_params)
+    if @review.save
+      render json: @review
+    else
+      render json: { errors: @review.errors.full_messages }, status: :unprocessible_entity
+    end    
   end
 
-  
+
 
 
 
