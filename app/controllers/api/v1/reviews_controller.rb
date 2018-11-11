@@ -16,11 +16,28 @@ class Api::V1::ReviewsController < ApplicationController
       render json: @review
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessible_entity
-    end    
+    end
   end
 
+  def show
+    @review = Review.find(params[:id])
+    render json: @review
+  end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+  end
 
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    if @review.save
+      render json: @review
+    else
+      render json: { errors: @review.errors.full_messages }, status: :unprocessible_entity
+    end    
+  end
 
 
 private
