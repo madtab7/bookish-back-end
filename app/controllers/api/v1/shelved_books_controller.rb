@@ -5,8 +5,6 @@ class Api::V1::ShelvedBooksController < ApplicationController
     # @shelved_books = ShelvedBook.all
     if params[:user_id] != nil
       @shelved_books = ShelvedBook.where( {"user_id": params[:user_id]} )
-      # @shelved_books = ShelvedBook.where( {"user_id": params[:user_id]}, {"read": params[:read]}, {"want_to_read": params[:want_to_read]} )
-      # puts params
     else
       @shelved_books = ShelvedBook.all
     end
