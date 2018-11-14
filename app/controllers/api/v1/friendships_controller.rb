@@ -7,7 +7,7 @@ class Api::V1::FriendshipsController < ApplicationController
       @friendships = Friendship.where( {"user_id": params[:user_id]} )
     else
       @friendships = Friendship.all
-    end  
+    end
     render json: @friendships
   end
 
