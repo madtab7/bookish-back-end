@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-
 users = User.create([
   {
     username: "madtab",
@@ -26,17 +24,5 @@ users = User.create([
     password: "fbenton",
     full_name: "Forrest Benton",
     avatarURL: "https://ca.slack-edge.com/T02MD9XTF-UC2J6TJ94-148db1d64a63-48"
-  },
-  {
-    username: "nrobin",
-    password:"nrobin",
-    full_name: "Nick Robin",
-    avatarURL: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/25442862_10155891423716192_7094111462824756063_n.jpg?_nc_cat=106&_nc_ht=scontent-iad3-1.xx&oh=56ea86b124135da57a6509bbd2913ed6&oe=5CAD382F"
-  },
-  {
-    username: "atabing",
-    password:"atabing",
-    full_name: "Alex Tabing",
-    avatarURL: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/13769341_10210584608115526_8499678271178868233_n.jpg?_nc_cat=108&_nc_ht=scontent-iad3-1.xx&oh=f3ed310e99070bd05684a6c0e25073fd&oe=5CB03BF5"
   }
   ])
